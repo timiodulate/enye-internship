@@ -1,0 +1,149 @@
+@media (prefers-reduced-motion: no-preference) {
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
+}
+
+.App-link {
+	color: #61dafb;
+}
+
+li {
+	text-decoration: none;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.App {
+	text-align: center;
+	background-color: rgb(202, 202, 202);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 40px;
+}
+
+.App-header {
+	font-size: 2.5rem;
+	margin-bottom: 10px;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.b {
+	/* border: solid red; */
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.search-input {
+	width: 50%;
+	padding: 10px;
+	font-size: 0.8rem;
+	margin-bottom: 10px;
+
+	margin-bottom: 0px;
+	height: fit-content;
+}
+
+.dropdown-container {
+	border: solid red;
+	background-color: white;
+	/* width: 40%; */
+	align-self: flex-end;
+	/* display: flex; */
+	/* align-items: center; */
+	/* justify-content: center; */
+	margin-bottom: 10px;
+	position: relative;
+
+	height: fit-content;
+	border: none;
+	width: 35%;
+}
+
+.dropdown-container > p {
+	text-align: left;
+
+	padding: 10px;
+	font-size: 0.8rem;
+	margin: 0;
+}
+
+.a {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	align-items: top;
+	justify-content: center;
+
+	right: 10px;
+}
+
+.dropdown {
+	margin-right: 10px;
+	/* border: solid red; */
+	display: flex;
+	flex-direction: column;
+}
+.dropdown:last-child {
+	margin-right: 0px;
+}
+
+.dropdown-details {
+	display: flex;
+	/* border: solid blue; */
+	height: fit-content;
+}
+
+.dropdown-title {
+	margin-right: 10px;
+	height: fit-content;
+}
+
+.dropdown-details > div {
+	margin: 16px 0;
+
+	margin: 10px 0;
+	font-size: 0.8rem;
+}
+.dropdown-details > div > p {
+	margin: 0px;
+}
+.profiles-container {
+	background-color: white;
+	width: 100%;
+}
+
+/* Pagination */
+/* nav {
+	border: solid 1px red;
+} */
+
+nav > ul {
+	padding-left: 0;
+}
+
+.page-item {
+	display: inline;
+	padding: 5px 9px;
+	border: solid 1px white;
+	margin-right: 5px;
+}
+
+.page-item:last-child {
+	margin-right: 0;
+}
+
+.page-link {
+	color: black;
+}
