@@ -18,7 +18,7 @@ export default function LandingPage(props) {
 
 				<div className="dropdown-container">
 					<Dropdown title="Gender" />
-					<Dropdown title="Credit Card Type" />
+					<Dropdown title="PaymentMethod" />
 				</div>
 			</div>
 

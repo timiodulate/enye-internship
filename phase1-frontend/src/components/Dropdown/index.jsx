@@ -9,29 +9,31 @@ export default function Dropdown({ multiSelect, title }) {
 
 	const toggle = () => setOpen(!open);
 
-	// copy string of what I clicked
-	// Send it to where profiles are
-	// Use it to filter the rendered data
-
 	function handleClick(filterItem) {
-		if (!selection.some((current) => current.id === filterItem.id)) {
-			if (!multiSelect) {
-				setSelection({ filterItem });
-			} else if (multiSelect) {
-				setSelection([...selection, filterItem]);
-			}
-		}
+		// if (!selection.some((current) => current.id === filterItem.id)) {
+		// 	if (!multiSelect) {
+		// 		setSelection({ filterItem });
+		// 	} else if (multiSelect) {
+		// 		setSelection([...selection, filterItem]);
+		// 	}
+		// } else {
+		// 	let selectionAfterRemoval = selection;
+		// 	selectionAfterRemoval = selectionAfterRemoval.filter(
+		// 		(current) => current.id !== filterItem.id
+		// 	);
+		// 	setSelection([...selectionAfterRemoval]);
+		// }
 
 		setDropdownValue(filterItem);
 	}
 
-	function isFilterItemSelected(filterItem) {
-		// console.log(selection);
-		// if (selection.find((current) => current.id === filterItem.id)) {
-		// return true;
-		// }
-		// return false;
-	}
+	// function isFilterItemSelected(filterItem) {
+	// console.log(selection);
+	// if (selection.find((current) => current.id === filterItem.id)) {
+	// return true;
+	// }
+	// return false;
+	// }
 
 	return (
 		<div className="dropdown">
@@ -46,23 +48,26 @@ export default function Dropdown({ multiSelect, title }) {
 					<p>{title}</p>
 				</div>
 				<div>
-					<p>{open ? "x" : "!"}</p>
+					<p>{open ? " -" : " +"}</p>
 				</div>
 			</div>
 
 			{open && (
-				<ul>
+				<ul className="filter-container">
 					{dropdownData(title).map((profile, i) => (
 						<li key={profile}>
 							<button
 								type="button"
-								onClick={() => handleClick(profile)}
+								onClick={(e) => {
+									e.preventDefault();
+									handleClick(profile);
+								}}
 							>
 								<span>{profile}</span>
-								<span>
+								{/* <span>
 									{isFilterItemSelected(profile) &&
 										"Selected"}
-								</span>
+								</span> */}
 							</button>
 						</li>
 					))}

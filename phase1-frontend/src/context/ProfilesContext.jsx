@@ -4,7 +4,6 @@ export const ProfilesContext = createContext(null);
 
 export const ProfilesProvider = (props) => {
 	const [profilesData, setProfilesData] = useState([]);
-
 	useEffect(() => {
 		fetch("http://api.enye.tech/v1/challenge/records")
 			.then((res) => res.json())
@@ -18,8 +17,9 @@ export const ProfilesProvider = (props) => {
 	const handleInputChange = (event) => {
 		setSearchValue(event.target.value);
 	};
+
 	const filteredData = (filterValue) => {
-		let newt = profilesData.filter((value) => {
+		let filterData = profilesData.filter((value) => {
 			if (filterValue === "") {
 				return value;
 			} else if (
@@ -34,10 +34,15 @@ export const ProfilesProvider = (props) => {
 				value.Gender.toLowerCase() === filterValue.toLowerCase()
 			) {
 				return value;
+			} else if (
+				sortBy === "PaymentMethod" &&
+				value.PaymentMethod.toLowerCase() === filterValue.toLowerCase()
+			) {
+				return value;
 			}
 		});
 
-		return newt;
+		return filterData;
 	};
 
 	// Dropdown Filter
@@ -63,22 +68,26 @@ export const ProfilesProvider = (props) => {
 	const [profilePerPage, setProfilePerPage] = useState(10);
 	const indexOfLastProfile = currentPage * profilePerPage;
 	const indexOfFirstProfile = indexOfLastProfile - profilePerPage;
-	const currentProfiles = filteredData(
+	const filteredProfiles = filteredData(
 		dropdownValue !== "" ? dropdownValue : searchValue
-	).slice(indexOfFirstProfile, indexOfLastProfile);
+	);
+	const currentProfiles = filteredProfiles.slice(
+		indexOfFirstProfile,
+		indexOfLastProfile
+	);
 	// change Page
 	const paginate = (number) => setCurrentPage(number);
 
 	return (
 		<ProfilesContext.Provider
 			value={{
-				profilesData,
 				searchValue,
 				handleInputChange,
 				filteredData,
 				dropdownValue,
 				setDropdownValue,
 				dropdownData,
+				filteredProfiles,
 				currentProfiles,
 				profilePerPage,
 				paginate,
