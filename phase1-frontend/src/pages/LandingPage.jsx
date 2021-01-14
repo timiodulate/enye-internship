@@ -9,15 +9,16 @@ export default function LandingPage(props) {
 		<div className="App">
 			<header className="App-header">Profiles</header>
 
-			<div className="b">
+			<div className="search-container">
 				<Search />
+			</div>
+
+			<div className="sort-container">
+				<p>Sort by:</p>
 
 				<div className="dropdown-container">
-					<p>Sort by:</p>
-					<div className="a">
-						<Dropdown title="Gender" />
-						<Dropdown title="gender" />
-					</div>
+					<Dropdown title="Gender" />
+					<Dropdown title="Credit Card Type" />
 				</div>
 			</div>
 

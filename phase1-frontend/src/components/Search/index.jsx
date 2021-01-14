@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { ProfilesContext } from "../../context/ProfilesContext";
-// import searchInputStyles from "./search.module.css";
 
 const Search = () => {
 	const { searchValue, handleInputChange } = useContext(ProfilesContext);
@@ -9,7 +8,7 @@ const Search = () => {
 		<input
 			className="search-input"
 			type="text"
-			placeholder="Search..."
+			placeholder="Search name..."
 			value={searchValue}
 			onChange={handleInputChange}
 		/>

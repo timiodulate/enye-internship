@@ -49,9 +49,10 @@ export default function Dropdown({ multiSelect, title }) {
 					<p>{open ? "x" : "!"}</p>
 				</div>
 			</div>
+
 			{open && (
 				<ul>
-					{dropdownData("age").map((profile, i) => (
+					{dropdownData(title).map((profile, i) => (
 						<li key={profile}>
 							<button
 								type="button"

@@ -19,21 +19,19 @@ export const ProfilesProvider = (props) => {
 		setSearchValue(event.target.value);
 	};
 	const filteredData = (filterValue) => {
-		console.log(filterValue);
-		console.log(profilesData);
 		let newt = profilesData.filter((value) => {
-			console.log(value);
 			if (filterValue === "") {
 				return value;
 			} else if (
-				typeof filterValue === String &&
-				value.name.toLowerCase().includes(filterValue.toLowerCase())
+				value.FirstName.toLowerCase().includes(
+					filterValue.toLowerCase()
+				) ||
+				value.LastName.toLowerCase().includes(filterValue.toLowerCase())
 			) {
 				return value;
 			} else if (
-				typeof filterValue !== String
-				// value.age.includes(filterValue)
-				// value.age.
+				sortBy === "Gender" &&
+				value.Gender.toLowerCase() === filterValue.toLowerCase()
 			) {
 				return value;
 			}
@@ -44,7 +42,9 @@ export const ProfilesProvider = (props) => {
 
 	// Dropdown Filter
 	const [dropdownValue, setDropdownValue] = useState("");
+	const [sortBy, setSortBy] = useState("");
 	const dropdownData = (filterBy) => {
+		setSortBy(filterBy);
 		let data = [];
 		profilesData.map((val) => {
 			if (data.includes(val[filterBy])) {
