@@ -1,31 +1,14 @@
 const express = require("express");
-const path = require("path");
-const bodyParser = require("body-parser");
+const { ratesController } = require("./controllers/rates_controller");
+const PORT = 4000;
 
-const api = express();
+const app = express();
 
-const HOST = "localhost";
-const PORT = 8888;
+// Middle wares
+app.use(express.json());
 
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
+app.get("/api/rates", ratesController);
 
-api.get("/", (req, res) => {
-	res.send("Welcome! go to /api/rates");
-});
-
-api.get("/api/rates", (req, res) => {
-	res.sendFile(path.join(__dirname + "/index.html"));
-});
-
-api.post("/api/rates", urlencodedParser, (req, res) => {
-	console.log(req.body);
-	res.send({
-		results: { ...req.body },
-	});
-
-	// res.sendFile(path.join(__dirname + "/query.html"), {data: req.body});
-});
-
-api.listen(PORT, () => {
-	console.log(`API running at ${HOST}:${PORT}`);
+app.listen(PORT, () => {
+	console.log("The app is listening at http://localhost:" + PORT);
 });

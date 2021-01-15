@@ -1,8 +1,11 @@
-import React, { useContext } from "react";
-import { ProfilesContext } from "../../context/ProfilesContext";
+import React, { useState } from "react";
 
-const Search = () => {
-	const { searchValue, handleInputChange } = useContext(ProfilesContext);
+const Search = ({ filteredData }) => {
+	const [searchValue, setSearchValue] = useState("");
+	const handleInputChange = (event) => {
+		setSearchValue(event.target.value);
+		filteredData(event.target.value);
+	};
 
 	return (
 		<input

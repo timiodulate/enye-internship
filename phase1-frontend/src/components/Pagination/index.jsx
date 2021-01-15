@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
-import { ProfilesContext } from "../../context/ProfilesContext";
+import React from "react";
 
-export default function Pagination(props) {
-	const { filteredProfiles, profilePerPage, paginate } = useContext(
-		ProfilesContext
-	);
-
-	const totalProfiles = filteredProfiles.length;
+export default function Pagination({
+	filteredProfilesData,
+	profilePerPage,
+	paginate,
+}) {
+	const totalProfiles = filteredProfilesData.length;
 	const pageNumbers = [];
 
 	for (let i = 1; i <= Math.ceil(totalProfiles / profilePerPage); i++) {

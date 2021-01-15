@@ -1,8 +1,6 @@
-import React, { useContext } from "react";
-import { ProfilesContext } from "../../context/ProfilesContext";
+import React from "react";
 
-export default function Profiles() {
-	const { currentProfiles } = useContext(ProfilesContext);
+export default function Profiles({ currentProfiles }) {
 	const columns = currentProfiles[0] && Object.keys(currentProfiles[0]);
 
 	return (
