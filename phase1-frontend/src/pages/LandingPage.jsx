@@ -6,9 +6,7 @@ import Dropdown from "../components/Dropdown";
 
 export default function LandingPage(props) {
 	const [profilesData, setProfilesData] = useState([]);
-	const [filteredProfilesData, setFilteredProfilesData] = useState([
-		...profilesData,
-	]);
+	const [filteredProfilesData, setFilteredProfilesData] = useState([]);
 	useEffect(() => {
 		fetch("http://api.enye.tech/v1/challenge/records")
 			.then((res) => res.json())
@@ -22,7 +20,7 @@ export default function LandingPage(props) {
 	const filteredData = (filterValue) => {
 		let filterData = filteredProfilesData.filter((value) => {
 			if (filterValue === "") {
-				return profilesData;
+				return value;
 			} else if (
 				value.FirstName.toLowerCase().includes(
 					filterValue.toLowerCase()
@@ -43,10 +41,14 @@ export default function LandingPage(props) {
 			}
 		});
 
-		setFilteredProfilesData(filterData);
+		if (filterValue === "") {
+			setFilteredProfilesData(profilesData);
+		} else {
+			setFilteredProfilesData(filterData);
+		}
 	};
 
-	// // Dropdown Filter
+	// Dropdown Filter
 	const [sortBy, setSortBy] = useState("");
 	const [dropdownValue, setDropdownValue] = useState("");
 	const dropdownData = (filterBy) => {
@@ -68,7 +70,7 @@ export default function LandingPage(props) {
 			setDropdownValue("");
 		}
 
-		filteredData(filterItem);
+		filteredData(dropdownValue);
 	}
 
 	// Pagination
