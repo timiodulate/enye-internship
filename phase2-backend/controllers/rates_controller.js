@@ -7,15 +7,16 @@ const ratesController = (req, res, next) => {
 
 	exchangeHelper.getParticularBase(baseCode, (err, responseData) => {
 		const response = {
-results: {
-base: '',
-date: '',
-			rates: {},
-		},};
+			results: {
+				base: "",
+				date: "",
+				rates: {},
+			},
+		};
 
 		if (!err && responseData) {
-			response.results.date = responseData.date;
 			response.results.base = responseData.base;
+			response.results.date = responseData.date;
 
 			for (i = 0; i < wantedCurrencies.length; i++) {
 				if (responseData.rates[wantedCurrencies[i]]) {

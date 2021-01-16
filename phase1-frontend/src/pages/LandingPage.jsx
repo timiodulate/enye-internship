@@ -7,14 +7,18 @@ import Dropdown from "../components/Dropdown";
 export default function LandingPage(props) {
 	const [profilesData, setProfilesData] = useState([]);
 	const [filteredProfilesData, setFilteredProfilesData] = useState([]);
+
 	useEffect(() => {
-		fetch("http://api.enye.tech/v1/challenge/records")
-			.then((res) => res.json())
-			.then((data) => {
-				setProfilesData([...data.records.profiles]);
-				setFilteredProfilesData([...data.records.profiles]);
-			});
+		getUserData();
 	}, []);
+
+	const getUserData = async () => {
+		const end_point = "https://api.enye.tech/v1/challenge/records";
+		const fetchData = await fetch(end_point);
+		const fetchedData = await fetchData.json();
+		setProfilesData([...fetchedData.records.profiles]);
+		setFilteredProfilesData([...fetchedData.records.profiles]);
+	};
 
 	//Search
 	const filteredData = (filterValue) => {
