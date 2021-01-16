@@ -20,7 +20,10 @@ export default function Pagination({
 						<a
 							href="!#"
 							className="page-link"
-							onClick={() => paginate(pageNumber)}
+							onClick={(e) => {
+								e.preventDefault();
+								paginate(pageNumber);
+							}}
 						>
 							{pageNumber}
 						</a>

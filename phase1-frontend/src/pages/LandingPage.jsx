@@ -126,7 +126,10 @@ export default function LandingPage(props) {
 			/>
 
 			<footer>
-				created by <a href="timiodulate.netlify.app">timiodulate</a>
+				created by{" "}
+				<a href="http://timiodulate.netlify.app" target="_blank">
+					timiodulate
+				</a>
 			</footer>
 		</div>
 	);
